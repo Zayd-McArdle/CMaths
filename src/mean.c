@@ -1,5 +1,5 @@
 #include "mean.h"
-#define GET_MEAN(dataType, title) dataType get##title##Mean(ArraySize* array) {\
+#define GET_MEAN(dataType, title) dataType get##title##Mean(struct ArraySize* array) {\
     dataType output = 0;\
     for (int i = 0; i < array->size; i++)\
     {\

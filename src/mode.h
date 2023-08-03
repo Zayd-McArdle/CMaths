@@ -1,8 +1,14 @@
+#ifndef MODE_H
+#define MODE_H
 #include "arraySizes.h"
-typedef struct
-{
-    int value;
+struct Mode {
+    union {
+        int intValue;
+        double doubleValue;
+        long longValue;        
+    };
     int frequency;
-} Mode;
-Mode* getIntegerMode(ArraySize* array);
-Mode* getDoubleMode(ArraySize* array);
+} ;
+struct Mode* getIntegerMode(struct ArraySize* array);
+struct Mode* getDoubleMode(struct ArraySize* array);
+#endif

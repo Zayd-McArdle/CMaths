@@ -1,3 +1,6 @@
+#ifndef RANGE_H
+#define RANGE_H
 #include "arraySizes.h"
-int getRange(ArraySize* array);
-double getRangeWithDecimals(ArraySize* array);
+int getIntegerRange(struct ArraySize* array);
+double getDoubleRange(struct ArraySize* array);
+#endif

@@ -1,5 +1,7 @@
+#ifndef ARRAYSIZES_H
+#define ARRAYSIZES_H
 /// @brief Used for defining the array type and size
-typedef struct
+struct ArraySize
 {
     union
     {        
@@ -9,5 +11,5 @@ typedef struct
         long long* longlongArray;
     };    
     int size;
-} ArraySize;
-
+};
+#endif

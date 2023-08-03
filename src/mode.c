@@ -1,6 +1,6 @@
 #include "mode.h"
 #include <stdlib.h>
-static int findOccurrence(ArraySize* array, int value) {
+static int findOccurrence(struct ArraySize* array, int value) {
     int occurrence = 0;
     for (int i = 0; i < array->size; i++)
     {
@@ -12,24 +12,24 @@ static int findOccurrence(ArraySize* array, int value) {
     return occurrence;
     
 }
-#define SET_MODE(dataType, title) static inline void set##title##Mode(Mode* mode, ArraySize* array, int index) {\
-    mode->value = array->dataType##Array[index];\
+#define SET_MODE(dataType, title) static inline void set##title##Mode(struct Mode* mode, struct ArraySize* array, int index) {\
+    mode->dataType##Value = array->dataType##Array[index];\
     mode->frequency = findOccurrence(array, array->dataType##Array[index]);\
 }
-#define GET_MODE(title) Mode* get##title##Mode(ArraySize* array) {\
-    Mode* mode = NULL;\
+#define GET_MODE(dataType, title) struct Mode* get##title##Mode(struct ArraySize* array) {\
+    struct Mode* mode = NULL;\
     for (int i = 0; i < array->size; i++)\
     {\
         if (mode == NULL) {\
-            mode = (Mode*)malloc(sizeof(Mode));\
+            mode = (struct Mode*)malloc(sizeof(struct Mode));\
             set##title##Mode(mode, array, i);\
             continue;\
         }\
-        Mode tempMode;\
+        struct Mode tempMode;\
         set##title##Mode(&tempMode, array, i);\
-        if (tempMode.value != mode->value && tempMode.frequency > mode->frequency)\
+        if (tempMode.dataType##Value != mode->dataType##Value && tempMode.frequency > mode->frequency)\
         {\
-            mode->value = tempMode.value;\
+            mode->dataType##Value = tempMode.dataType##Value;\
             mode->frequency = tempMode.frequency;\
         }\
     }\
@@ -42,8 +42,8 @@ SET_MODE(double, Double)
 //     mode->value = array->intArray[index];
 //     mode->frequency = findOccurrence(array, array->intArray[index]);
 // }
-GET_MODE(Integer)
-GET_MODE(Double)
+GET_MODE(int, Integer)
+GET_MODE(double, Double)
 // Mode* getMode(ArraySize* array) {       
 //     Mode* mode = NULL;
 //     for (int i = 0; i < array->size; i++)

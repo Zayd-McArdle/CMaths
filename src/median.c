@@ -1,17 +1,14 @@
 #include <math.h>
 #include <stdlib.h>
-#include "median_declarations.h"
+#include "arraySizes.h"
 #include "median_macros.h"
 DECLARE_COMPARE_ARRAY_FUNCTIONS
-
-COMPARE_ARRAY(int, Integer);
-COMPARE_ARRAY(double, Double)
 GET_MEDIAN(int, Integer)
 GET_MEDIAN(double, Double)
 
 
-/*
-int getMedian(ArraySize* array) {
+
+/*int getMedian(struct ArraySize* array) {
     int output;
     qsort(array->intArray, array->size, sizeof(int), compareIntegerArray);
     if (array->size % 2 == 0) {
@@ -21,7 +18,7 @@ int getMedian(ArraySize* array) {
         output = (array->intArray[middleIndex] + array->intArray[middleIndex + 1]) / 2;
     } else {
         //returns the middle value in the array
-        output = array->intArray[round((array->size - 1) / 2)];
+        output = array->intArray[(int)round((array->size - 1) / 2)];
     }
     return output;
 }

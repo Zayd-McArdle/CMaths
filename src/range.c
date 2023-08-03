@@ -1,7 +1,7 @@
-#include "arraySizes.h"
+#include "range.h"
 #define DECLARE_SMALLEST_LARGEST(dataType) dataType smallest, largest
 #define CALCULATE largest - smallest
-#define GET_RANGE(dataType, title) dataType get##title##Range(ArraySize* array) {\
+#define GET_RANGE(dataType, title) dataType get##title##Range(struct ArraySize* array) {\
     dataType smallest, largest;\
     for (int i = 0; i < array->size; i++)\
     {\

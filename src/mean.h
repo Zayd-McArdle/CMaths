@@ -1,3 +1,7 @@
+#ifndef MEAN_H
+#define MEAN_H
 #include "arraySizes.h"
-int getIntegerMean(ArraySize* data);
-double getDoubleMean(ArraySize* array);
+
+int getIntegerMean(struct ArraySize* data);
+double getDoubleMean(struct ArraySize* array);
+#endif
